@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: black;
+  position: sticky;
+  top: 0px;
+  font-size: large;
+  height: 15vh;
+  color: aliceblue;
+  padding-left: 5%;
+}
+
+.container {
+  border-style: groove;
+  border-color: rgb(34, 33, 33);
+}
