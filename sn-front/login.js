@@ -26,6 +26,7 @@ async function login() {
   let response = await apiRequest.json();
   console.log(response);
   if (response.status === 200) {
+    localStorage.setItem("jwt", jwt);
     const data = await response.json();
     window.location.href = "./homepage.html";
   }
