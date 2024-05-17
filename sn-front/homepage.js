@@ -1,8 +1,11 @@
 async function displayPosts() {
   let container = document.querySelector(".container");
+  // retrieve id from followed user
+  localStorage.setItem("followed_id", 25);
+
   container.innerHTML = "";
 
-  let apiRequest = await fetch("http://localhost:3045/postsbyfollowed");
+  let apiRequest = await fetch("http://localhost:3045/post/postsbyfollowed/25");
   let response = await apiRequest.json();
   let posts = Array.from(response);
 
