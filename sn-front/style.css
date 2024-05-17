@@ -17,3 +17,8 @@ header {
   border-style: groove;
   border-color: rgb(34, 33, 33);
 }
+
+.submit-login {
+  margin-top: 25px;
+  width: 25%;
+}
