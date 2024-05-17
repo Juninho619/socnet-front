@@ -5,6 +5,7 @@ async function login() {
   const password = document.getElementById("password").value;
 
   if (!email || !password) {
+    alert("missing credentials");
     return;
   }
 
@@ -20,15 +21,14 @@ async function login() {
     },
     body: JSON.stringify(loginCredentials),
   };
-  console.log(loginCredentials);
-
   let apiRequest = await fetch("http://localhost:3045/login", request);
   let response = await apiRequest.json();
-  console.log(response);
+
   if (response.status === 200) {
     const data = await response.json();
-    window.location.href = "./homepage.html";
+    localStorage.setItem("jwt", data);
   }
+  document.location.href = "homepage.html";
 }
 
 submitButtonLogin.addEventListener("click", login);
