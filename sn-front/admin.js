@@ -11,7 +11,8 @@ async function showAllUsers() {
   let users = Array.from(response);
 
   users.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto ss='border-4 border-zinc rounded-md m-4 p-4"><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="deleteUser()" class="delete">Delete</button></div>`;
+    let id = element.user_id;
+    container.innerHTML += `<div class="container mx-auto ss='border-4 border-zinc rounded-md m-4 p-4"><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="deleteUser(${id})" class="delete">Delete</button></div>`;
   });
 }
 
@@ -43,7 +44,7 @@ async function searchuser() {
     let foundUsers = Array.from(response);
 
     foundUsers.forEach((element) => {
-      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button class="delete">Delete</button>`;
+      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="deleteUser(element.user_id)" class="delete">Delete</button>`;
     });
   }
 
@@ -68,7 +69,7 @@ async function searchuser() {
     const foundUsers = Array.from(response);
 
     foundUsers.forEach((element) => {
-      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button class="delete">Delete</button>`;
+      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="deleteUser(element.user_id" class="delete">Delete</button>`;
     });
   }
 }
@@ -92,10 +93,9 @@ async function deleteUser(userId) {
     "http://localhost:3045/deleteuser",
     deleteRequest
   );
-  let response = await apiRequest.json;
-  deleteButton.innerHTML = response;
+  // let response = await apiRequest.json;
+  // deleteButton.innerHTML = response;
 }
 
 searchUsernameButton.addEventListener("click", searchuser);
 emailButton.addEventListener("click", searchuser);
-deleteButton.addEventListener("click", deleteUser);
