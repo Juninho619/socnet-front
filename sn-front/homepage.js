@@ -30,13 +30,12 @@ async function displayPosts() {
       let publishCommentButton = document.querySelector(
         ".publish-comment-button"
       );
-      let commentInput = document.querySelector(".comment-input").value;
+      let commentInput = document.querySelector(".comment-input");
       publishCommentButton.addEventListener("click", async () => {
         let commentRequest = {
           id: commentId,
-          comment: commentInput,
+          comment: commentInput.value,
         };
-        console.log(commentInput);
 
         let postComment = {
           method: "POST",
