@@ -15,7 +15,7 @@ async function displayPosts() {
   console.log(posts);
 
   posts.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto ss='border-4 border-zinc rounded-md m-4 p-4"><p>${element.post_content}</p><p>${element.post_comment}</p><button class="follow">Follow</button></div>`;
+    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p>${element.post_comment}</p><button class="follow">Follow</button></div>`;
   });
 }
 
