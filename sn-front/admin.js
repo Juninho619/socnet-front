@@ -1,3 +1,6 @@
+const searchUsernameButton = document.querySelector(".username-search-button");
+const emailButton = document.querySelector(".email-search-button");
+
 async function showAllUsers() {
   let container = document.querySelector(".container");
   container.innerHTML = "";
@@ -78,8 +81,7 @@ async function searchuser() {
 
 showAllUsers();
 
-const searchUsernameButton = document.querySelector(".username-search-button");
-const emailButton = document.querySelector(".email-search-button");
+async function deleteUser() {}
 
 searchUsernameButton.addEventListener("click", searchuser);
 emailButton.addEventListener("click", searchuser);
