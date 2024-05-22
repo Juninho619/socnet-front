@@ -21,8 +21,6 @@ async function newProfilePic() {
   console.log(response);
   if (response.status === 200) {
     const data = await response.json();
-    window.location.href = "./login.html";
-    console.log("Ok");
   }
 }
 
