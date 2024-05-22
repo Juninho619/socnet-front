@@ -78,7 +78,7 @@ async function searchuser() {
 
 showAllUsers();
 
-const searchUsernameButton = document.querySelector(".search-bar-username");
+const searchUsernameButton = document.querySelector(".username-search-button");
 const emailButton = document.querySelector(".email-search-button");
 
 searchUsernameButton.addEventListener("click", searchuser);
