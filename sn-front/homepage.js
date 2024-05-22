@@ -6,11 +6,13 @@ async function displayPosts() {
 
   container.innerHTML = "";
 
-  let apiRequest = fetch(
+  let apiRequest = await fetch(
     `http://localhost:3045/post/postsbyfollowed/${followerId}`
   );
-  let response = apiRequest.json();
+  let response = await apiRequest.json();
   let posts = Array.from(response);
+  console.log(response);
+  console.log(posts);
 
   posts.forEach((element) => {
     container.innerHTML += `<div class="container mx-auto ss='border-4 border-zinc rounded-md m-4 p-4"><p>${element.post_content}</p><p>${element.post_comment}</p><button class="follow">Follow</button></div>`;
