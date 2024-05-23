@@ -8,6 +8,9 @@ async function displayPosts() {
 
   container.innerHTML = "";
 
+  // add font awesome thumbs up and down
+  // display how many of each
+
   let apiRequest = await fetch(
     `http://localhost:3045/post/postsbyfollowed/${followerId}`
   );
@@ -17,7 +20,7 @@ async function displayPosts() {
   console.log(posts);
 
   posts.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p>${element.post_comment}</p><button class="comment">Comment</button><div class="comment-area"></div></div>`;
+    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment">Comment</button><div class="comment-area"></div></div>`;
     let commentArea = document.querySelector(".comment-area");
     let commentButton = document.querySelector(".comment");
     let commentId = element._id;
