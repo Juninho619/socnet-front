@@ -20,10 +20,51 @@ async function displayPosts() {
   console.log(posts);
 
   posts.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="fa fa-thin fa-thumbs-up"></i><i class="fa fa-thin fa-thumbs-down"></i></div></div>`;
+    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="like-button fa fa-thin fa-thumbs-up"></i><p>${element.post_like}</p><i class="fa fa-thin fa-thumbs-down"></i><p>${element.post_dislike}</div></div>`;
     let commentArea = document.querySelector(".comment-area");
     let commentButton = document.querySelector(".comment");
     let commentId = element._id;
+    let likeButton = document.querySelector(".fa-thumbs-up");
+    let dislikeButton = document.querySelector(".fa-thumbs-down");
+    let postId = element._id;
+
+    likeButton.addEventListener("click", async () => {
+      let likeRequest = {
+        id: postId,
+      };
+
+      let postLike = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(likeRequest),
+      };
+      let publishComment = await fetch(
+        "http://localhost:3045/post/like",
+        postLike
+      );
+      let response = await publishComment.json();
+    });
+
+    dislikeButton.addEventListener("click", async () => {
+      let disLikeRequest = {
+        id: postId,
+      };
+
+      let postDislike = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(disLikeRequest),
+      };
+      let publishComment = await fetch(
+        "http://localhost:3045/post/dislike",
+        postDislike
+      );
+      let response = await publishComment.json();
+    });
 
     commentButton.addEventListener("click", async () => {
       commentArea.innerHTML = "";
