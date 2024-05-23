@@ -19,7 +19,7 @@ async function showAllUsers() {
     followButton.addEventListener("click", async () => {
       let followRequest = {
         follower_id: followerId,
-        followed_id: followedid,
+        followed_id: followedId,
       };
 
       let followUser = {
