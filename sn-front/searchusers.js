@@ -70,7 +70,7 @@ async function searchuser() {
     let foundUsers = Array.from(response);
 
     foundUsers.forEach((element) => {
-      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="followUser(element.user_id)" class="follow">Follow</button>`;
+      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="followUser(element.user_id)" class="follow border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2">Follow</button>`;
     });
   }
 
@@ -95,7 +95,7 @@ async function searchuser() {
     const foundUsers = Array.from(response);
 
     foundUsers.forEach((element) => {
-      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="followUser(element.user_id)" class="follow">Follow</button>`;
+      container.innerHTML += `<h2>${element.username}</h2><p>${element.email}</p><p>${element.first_name}</p><p>${element.last_name}<button onclick="followUser(element.user_id)" class="follow  border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2">Follow</button>`;
     });
   }
 }
