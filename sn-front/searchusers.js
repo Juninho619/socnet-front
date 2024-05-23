@@ -16,8 +16,8 @@ async function showAllUsers() {
   // implement search here as well
 
   users.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-gray-500 rounded-md m-4 p-4"<img src="${element.user_profile}"/><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button id="${element.user_id} class="follow-button border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2"">Follow</button></div>`;
-    let followButton = document.querySelector(".follow-button");
+    container.innerHTML += `<div class="container mx-auto border-gray-500 rounded-md m-4 p-4"<img src="${element.user_profile}"/><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button id="${element.user_id}" class="follow-button border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2">Follow</button></div>`;
+    const followButton = document.querySelector(".follow-button");
     followButton.addEventListener("click", followUser(element.user_id));
   });
 }
@@ -25,8 +25,8 @@ async function followUser(userId) {
   window.localStorage.setItem("follower-id", 4);
   let followerId = window.localStorage.getItem("follower-id");
   let followRequest = {
-    follower_id: followerId,
-    followed_id: userId,
+    followerId: followerId,
+    followedId: userId,
   };
 
   let followUser = {
