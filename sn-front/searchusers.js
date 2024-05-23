@@ -16,30 +16,28 @@ async function showAllUsers() {
   // implement search here as well
 
   users.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-gray-500 rounded-md m-4 p-4"<img src="${element.user_profile}"/><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button class="follow border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2"">Follow</button></div>`;
+    container.innerHTML += `<div class="container mx-auto border-gray-500 rounded-md m-4 p-4"<img src="${element.user_profile}"/><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button id="${element.user_id} class="follow border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2"">Follow</button></div>`;
     let followButton = document.querySelector(".follow");
     followButton.addEventListener("click", followUser(element.user_id));
   });
+}
+async function followUser(userId) {
+  window.localStorage.setItem("follower-id", 4);
+  let followerId = window.localStorage.getItem("follower-id");
+  let followRequest = {
+    follower_id: followerId,
+    followed_id: userId,
+  };
 
-  async function followUser(userId) {
-    let followRequest = {
-      follower_id: followerId,
-      followed_id: followedId,
-    };
-
-    let followUser = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(followRequest),
-    };
-    let publishComment = await fetch(
-      "http://localhost:3045/follow",
-      followUser
-    );
-    let response = await publishComment.json();
-  }
+  let followUser = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(followRequest),
+  };
+  let publishComment = await fetch("http://localhost:3045/follow", followUser);
+  let response = await publishComment.json();
 }
 
 async function searchuser() {

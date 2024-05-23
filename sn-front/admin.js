@@ -97,5 +97,21 @@ async function deleteUser(userId) {
   // deleteButton.innerHTML = response;
 }
 
+async function showAllPosts() {
+  let container1 = document.querySelector(".container1");
+  container1.innerHTML = "";
+
+  let apiRequest = await fetch("http://localhost:3045/post/allposts");
+  let response = await apiRequest.json();
+  let posts = Array.from(response);
+
+  posts.forEach((element) => {
+    let id = element.user_id;
+    container1.innerHTML += `<div class="container mx-auto ss='border-4 border-zinc rounded-md m-4 p-4"><p>${element.post_content}</p><p>${element.post_comment}</p></div>`;
+  });
+}
+
+showAllPosts();
+
 searchUsernameButton.addEventListener("click", searchuser);
 emailButton.addEventListener("click", searchuser);
