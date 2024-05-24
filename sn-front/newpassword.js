@@ -4,6 +4,7 @@ async function setNewPassword() {
   const newPasswordInput = document.getElementById("password").value;
   const confirmNewPasswordInput =
     document.getElementById("confirm-password").value;
+  const emailInput = document.getElementById("email").value;
 
   if (!newPasswordInput || !confirmNewPasswordInput) return false;
 
@@ -12,7 +13,8 @@ async function setNewPassword() {
   if (newPasswordInput == confirmNewPasswordInput) {
     const newPassword = newPasswordInput;
     let object = {
-      email: newPassword,
+      email: emailInput,
+      newPassword: newPassword,
     };
     console.log(object);
 
