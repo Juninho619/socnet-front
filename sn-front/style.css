@@ -13,6 +13,10 @@ header {
   padding-left: 5%;
 }
 
+.links {
+  text-align: right;
+}
+
 .container {
   border-style: groove;
   border-color: rgb(34, 33, 33);
