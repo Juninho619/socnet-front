@@ -8,12 +8,6 @@ async function showAllUsers() {
   let apiRequest = await fetch("http://localhost:3045/displayusers");
   let response = await apiRequest.json();
   let users = Array.from(response);
-  console.log(users);
-  console.log(response);
-
-  // follow function
-  // select button
-  // implement search here as well
 
   users.forEach((element) => {
     container.innerHTML += `<div class="container mx-auto border-gray-500 rounded-md m-4 p-4"><img class="image border-red border-2" src="../../socnet-back//sn-back/src/uploads/${element.profile}" width="200" height="100"/><h2>${element.username}</h2><p>${element.user_email}</p><p>${element.first_name}</p><p>${element.last_name}<button id="${element.user_id}" class="follow-button border-1 border-black bg-blue-400 text-white ml-2 rounded-md p-2">Follow</button></div>`;
@@ -22,7 +16,7 @@ async function showAllUsers() {
   });
 }
 async function followUser(userId) {
-  window.localStorage.setItem("follower-id", 4);
+  window.localStorage.setItem("follower-id", userId);
   let followerId = window.localStorage.getItem("follower-id");
   let followRequest = {
     followerId: followerId,
@@ -33,6 +27,7 @@ async function followUser(userId) {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
+      Authorization: `bearer ${jwt}`,
     },
     body: JSON.stringify(followRequest),
   };
