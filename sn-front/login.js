@@ -27,8 +27,8 @@ async function login() {
   if (response.status === 200) {
     const data = await response.json();
     localStorage.setItem("jwt", data);
+    document.location.href = "homepage.html";
   }
-  document.location.href = "homepage.html";
 }
 
 submitButtonLogin.addEventListener("click", login);

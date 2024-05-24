@@ -26,14 +26,17 @@ async function setNewPassword() {
       },
       body: JSON.stringify(object),
     };
+    console.log(request);
     let apiRequest = await fetch(
       "http://localhost:3045//passwordreset",
       request
     );
     let response = await apiRequest.json();
+    console.log(response);
 
     if (response.status === 200) {
       const data = await response.json();
+      console.log(data);
     }
     window.location.href = "./login.html";
   }
