@@ -6,7 +6,8 @@ async function setNewPassword() {
     document.getElementById("confirm-password").value;
   const emailInput = document.getElementById("email").value;
 
-  if (!newPasswordInput || !confirmNewPasswordInput) return false;
+  if (!newPasswordInput || !confirmNewPasswordInput || !emailInput)
+    return false;
 
   if (!newPasswordInput == confirmNewPasswordInput) return false;
 
@@ -34,6 +35,7 @@ async function setNewPassword() {
     if (response.status === 200) {
       const data = await response.json();
     }
+    window.location.href = "./login.html";
   }
 }
 
