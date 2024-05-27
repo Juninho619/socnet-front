@@ -18,10 +18,9 @@ async function displayPosts() {
   console.log(posts);
 
   posts.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-94"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment bg-sky-500 hover:bg-sky-700 rounded-full" id="${element._id}">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="like-button fa fa-thin fa-thumbs-up"></i><p>${element.post_like}</p><i class="fa fa-thin fa-thumbs-down"></i><p>${element.post_dislike}</div></div>`;
+    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-94"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment bg-sky-500 hover:bg-sky-700 rounded-full" id="${element._id}">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="like-button fa fa-thin fa-thumbs-up" id="${element._id}"></i><p>${element.post_like}</p><i class="fa fa-thin fa-thumbs-down" id="${element._id}"></i><p>${element.post_dislike}</div></div>`;
     let commentArea = document.querySelector(".comment-area");
     let commentButton = document.querySelector(".comment");
-    let commentId = element._id;
     let likeButton = document.querySelector(".fa-thumbs-up");
     let dislikeButton = document.querySelector(".fa-thumbs-down");
     let postId = element._id;
@@ -46,7 +45,7 @@ async function displayPosts() {
     });
 
     dislikeButton.addEventListener("click", async () => {
-      let disLikeRequest = {
+      let dislikeRequest = {
         id: postId,
       };
 
@@ -55,7 +54,7 @@ async function displayPosts() {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
         },
-        body: JSON.stringify(disLikeRequest),
+        body: JSON.stringify(dislikeRequest),
       };
       let publishComment = await fetch(
         "http://localhost:3045/post/dislike",
@@ -65,6 +64,7 @@ async function displayPosts() {
     });
 
     commentButton.addEventListener("click", async () => {
+      console.log("hey");
       commentArea.innerHTML = "";
       commentArea.innerHTML += `
 <textarea id="message" rows="4" class="comment-input block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your comment here..."></textarea>
@@ -75,7 +75,7 @@ async function displayPosts() {
       let commentInput = document.querySelector(".comment-input");
       publishCommentButton.addEventListener("click", async () => {
         let commentRequest = {
-          id: commentId,
+          id: postId,
           comment: commentInput.value,
         };
 

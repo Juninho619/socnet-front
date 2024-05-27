@@ -27,7 +27,7 @@ async function followUser(userId) {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      Authorization: `bearer ${jwt}`,
+      // Authorization: `bearer ${jwt}`,
     },
     body: JSON.stringify(followRequest),
   };
