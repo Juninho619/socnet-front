@@ -2,6 +2,8 @@ const searchUsernameButton = document.querySelector(".username-search-button");
 const emailButton = document.querySelector(".email-search-button");
 const deleteButton = document.querySelector(".delete");
 
+window.localStorage.setItem("token", token);
+const token = localStorage.getItem(token);
 async function showAllUsers() {
   let container = document.querySelector(".container");
   container.innerHTML = "";

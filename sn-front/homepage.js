@@ -4,8 +4,6 @@ async function displayPosts() {
   // api call followed users
   let followerId = window.localStorage.getItem("follower_id");
 
-  // comment id not posterid you dumbfuck
-
   container.innerHTML = "";
 
   // add font awesome thumbs up and down
@@ -102,6 +100,6 @@ async function displayPosts() {
   });
 }
 
-async function suggestUsers() {}
+// async function suggestUsers() {}
 
 displayPosts();
