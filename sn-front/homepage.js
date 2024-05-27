@@ -18,7 +18,7 @@ async function displayPosts() {
   console.log(posts);
 
   posts.forEach((element) => {
-    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-64"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="like-button fa fa-thin fa-thumbs-up"></i><p>${element.post_like}</p><i class="fa fa-thin fa-thumbs-down"></i><p>${element.post_dislike}</div></div>`;
+    container.innerHTML += `<div class="container mx-auto border-2 border-black rounded-md m-4 p-4 w-94"><p>${element.post_content}</p><p inline>${element.comment}</p><button class="comment bg-sky-500 hover:bg-sky-700 rounded-full" id="${element._id}">Comment</button><div class="comment-area"></div><div class="thumbs-icons"><i class="like-button fa fa-thin fa-thumbs-up"></i><p>${element.post_like}</p><i class="fa fa-thin fa-thumbs-down"></i><p>${element.post_dislike}</div></div>`;
     let commentArea = document.querySelector(".comment-area");
     let commentButton = document.querySelector(".comment");
     let commentId = element._id;
@@ -68,7 +68,7 @@ async function displayPosts() {
       commentArea.innerHTML = "";
       commentArea.innerHTML += `
 <textarea id="message" rows="4" class="comment-input block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your comment here..."></textarea>
-<button class="publish-comment-button">Publish comment</button>`;
+<button class="publish-comment-button rounded-full bg-black text-white">Publish comment</button>`;
       let publishCommentButton = document.querySelector(
         ".publish-comment-button"
       );

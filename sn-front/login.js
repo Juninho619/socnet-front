@@ -23,7 +23,7 @@ async function login() {
   };
   let apiRequest = await fetch("http://localhost:3045/login", request);
   let response = await apiRequest;
-  let data = await response.json();
+  const data = await response.json();
 
   if (!response.status === 200) {
     alert("incorrect credentials");
@@ -31,12 +31,11 @@ async function login() {
   }
 
   if (response.status === 200) {
-    const data = await response.json();
     let jwt = data.jwt;
     window.localStorage.setItem("jwt", data);
     console.log(response);
+    document.location.href = "homepage.html";
   }
-  document.location.href = "homepage.html";
 }
 
 submitButtonLogin.addEventListener("click", login);

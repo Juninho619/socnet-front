@@ -20,6 +20,7 @@ header {
 .container {
   border-style: groove;
   border-color: rgb(34, 33, 33);
+  text-align: center;
 }
 
 .submit-login {
@@ -29,9 +30,19 @@ header {
 
 .footer-list {
   background-color: black;
+  color: white;
   border-style: solid;
   /* position: fixed;
   bottom: 0px; */
   width: 100%;
   height: 60px;
+  text-align: center;
+}
+
+a:hover {
+  color: red;
+}
+
+i:hover {
+  color: rgba(52, 156, 78, 0.938);
 }
